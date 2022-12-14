@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier", "security-node", "sonarjs"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier",
+    "plugin:security-node/recommended",
+    "plugin:sonarjs/recommended"
+  ],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "prettier/prettier": "warn",
+    "sonarjs/cognitive-complexity": ["error", 50],
+    "sonarjs/no-duplicate-string": ["error", 5],
+    "no-constant-condition": ["error", { "checkLoops": false }]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "args": "none",
+            "argsIgnorePattern": "^_",
+            "ignoreRestSiblings": true
+          }
+        ]
+      }
+    }
+  ]
+}
